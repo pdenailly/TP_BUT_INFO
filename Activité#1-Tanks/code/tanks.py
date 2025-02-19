@@ -22,17 +22,17 @@ def stats(liste):
     return minimum, maximum, moyenne, mediane
 
 def estimateur_1(xmoy):
-       #A completer
+    return int(2*xmoy-1)
 
 def estimateur_2(xmed):
-    #A completer
+    return int(2*xmed-1)
 
 def estimateur_3(xmin, xmax):
-    #A completer
+    return xmax+xmin-1
 
 def estimateur_4(xmax, n):
-    #A completer
+    return int((n+1)*xmax/n-1)
 
 def estimateur_5(xmin, xmax, n):
-    #A completer
+    return int((n+1)*(xmax-xmin)/(n-1)-1)
 

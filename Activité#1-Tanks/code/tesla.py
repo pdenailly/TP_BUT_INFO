@@ -39,25 +39,56 @@ plt.show()
 #######################################################
 # Estimation de la production par mois
 #######################################################
+
 # Colonne contenant le mois
 df['MOIS'] = df['DATE'].dt.month
 
-# Filtrer les VINS en spécifiant le mois retenu, par exemple 6 (juin)
-mois_cible = 6
-vins = df[df['MOIS'] == mois_cible]['VIN'].to_list()
-print(vins)
+print(df)
 
-#A completer : estimation de N avec chaque estimateur, et pour chaque mois.
-
+for mois in range(1,13):
+    # Filtrer le mois spécifique
+    vins = df[df['MOIS'] == mois]['VIN'].to_list()
+    n = len(vins)
+    print(n)
+    e1, e2, e3, e4, e5 = estimations(vins)
+    print(f"Année {annee} - mois {mois} (n={n})")
+    print(f"N1 = {e1}")
+    print(f"N2 = {e2}")
+    print(f"N3 = {e3}")
+    print(f"N4 = {e4}")
+    print(f"N5 = {e5}")
 
 #######################################################
 # Estimation de la production pour l'année
 #######################################################
+vins = df['VIN'].to_list()
+n = len(vins)
+e1, e2, e3, e4, e5 = estimations(vins)
 
-#A completer
+print(f"Année {annee} (n={n})")
+print(f"N1 = {e1}")
+print(f"N2 = {e2}")
+print(f"N3 = {e3}")
+print(f"N4 = {e4}")
+print(f"N5 = {e5}")
+
 
 #######################################################
 # Estimation de la production par trimestre
 #######################################################
+trimestres = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]]
 
-#A completer 
+# Filtrer par trimestre en utilisant l'indice de boucle
+for trimestre in trimestres:  # Trimestres de 1 à 4 
+    # Filtrer les données pour les mois du trimestre actuel
+    vins_trimestre = df[df['MOIS'].isin(trimestre)]['VIN'].to_list()
+    n = len(vins_trimestre)
+    e1, e2, e3, e4, e5 = estimations(vins_trimestre)
+    print(f"Année {annee} - mois {trimestre} (n={n})")
+    print(f"N1 = {e1}")
+    print(f"N2 = {e2}")
+    print(f"N3 = {e3}")
+    print(f"N4 = {e4}")
+    print(f"N5 = {e5}")
+
+

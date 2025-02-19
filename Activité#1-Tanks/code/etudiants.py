@@ -18,13 +18,13 @@ def estimations(liste):
 
 
 # Population totale (inconnue)
-N = 100000
+N = 500
 
 # Décalage 1+s,2+s,...,N+s
-s = 10
+s = 0
 
 # Nombre d'observations (échantillon)
-n = 200
+n = 20
 
 ###################################################################
 # Génération d'une population et tirage aléatoire d'un échantillon
@@ -36,12 +36,17 @@ population = list(range(s+1,s+N+1))
 # Tirer aléatoirement n valeurs sans remise
 echantillon = random.sample(population, n)
 
+
+print(population)
+print(echantillon)
+
+
 # Estimations de N : cas 1 et 2
-#A completer
+echantillon_cas_1_et_2 = [x-s for x in echantillon]
+e1, e2, e3, e4, _ = estimations(echantillon_cas_1_et_2)
 
 # Estimations de N : cas 3
-#A completer
-
+_, _, _, _, e5 = estimations(echantillon)
 
 # Affichage des résultats
 print(f"\nPremier et second cas : s={s} connu, N={N} inconnu (n={n})")
@@ -51,3 +56,5 @@ print(f"N3 = {e3}")
 print(f"N4 = {e4}")
 print(f"\nTroisième cas : s={s} inconnu, N={N} inconnu (n={n})")
 print(f"N5 = {e5}\n")
+
+
